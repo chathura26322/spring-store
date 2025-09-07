@@ -10,6 +10,7 @@ public class NotificationManager {
 
     public NotificationManager(@Qualifier("SMS") NotificationService notificationService) {
         this.notificationService = notificationService;
+
     }
 
     public void sendNotification(String message) {

@@ -3,9 +3,12 @@ spring:
     name: store
 
 stripe:
-  apiUrl: https://api.stripe.com
-  enabled: true
-  timeout: 1000
-  supported-currencies: USD,EUR,GBP
-  payment-gateway: stripe
+    apiUrl: https://api.stripe.com
+    enabled: true
+    timeout: 1000
+    supported-currencies: USD,EUR,GBP
+    payment-gateway: stripe
 
+mail:
+  host: https://smtp.gmail.com
+  port: 5761
