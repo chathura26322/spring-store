@@ -33,6 +33,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @Builder.Default
+    @ToString.Exclude
     private List<Address>  addresses=new ArrayList<>();
 
     public void addAddress(Address address) {
@@ -64,8 +65,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     @Builder.Default
+    @ToString.Exclude
     private Set<Tag> tags = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
     private Profile profile;
+
+    @ManyToMany
+    @JoinTable(
+            name="wishlist",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private Set<Product> favouriteProducts = new HashSet<>();
+
 }

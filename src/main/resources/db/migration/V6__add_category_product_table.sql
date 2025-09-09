@@ -14,4 +14,5 @@ create table products
     category_id tinyint        not null,
     constraint products_categories_id_fk
         foreign key (category_id) references categories (id)
+        on delete restrict
 );

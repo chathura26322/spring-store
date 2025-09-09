@@ -1,29 +1,19 @@
 package com.codewithmosh.store;
 
-import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.Profile;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.repositories.UserRepository;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
 
 @SpringBootApplication
 public class StoreApplication {
 
     public static void main(String[] args) {
-//        ApplicationContext context=SpringApplication.run(StoreApplication.class, args);
-        var user = User.builder()
-                .id(1L)
-                .name("John")
-                .password("password")
-                .email("john@example.com")
-                .build();
+        ApplicationContext context = SpringApplication.run(StoreApplication.class);
+        var repository = context.getBean(UserRepository.class);
 
-        var profile = Profile.builder()
-                .bio("bio")
-                        .build();
+        repository.deleteById(1L);
 
-        user.setProfile(profile);
-        profile.setUser(user);
-
-        System.out.println(user);
     }
 }
