@@ -80,4 +80,7 @@ public class User {
     @ToString.Exclude
     private Set<Product> favouriteProducts = new HashSet<>();
 
+    public void addFavouriteProduct(Product product) {
+        favouriteProducts.add(product);
+    }
 }
