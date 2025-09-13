@@ -31,7 +31,7 @@ public class User {
     @Column(nullable = false,name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
     @Builder.Default
     @ToString.Exclude
     private List<Address>  addresses=new ArrayList<>();
@@ -68,8 +68,8 @@ public class User {
     @ToString.Exclude
     private Set<Tag> tags = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
-    private Profile profile;
+    @OneToOne(mappedBy = "user",cascade = CascadeType.REMOVE)
+    private Profile  profile;
 
     @ManyToMany
     @JoinTable(
@@ -77,6 +77,7 @@ public class User {
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
+    @ToString.Exclude
     private Set<Product> favouriteProducts = new HashSet<>();
 
 }
