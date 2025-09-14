@@ -1,5 +1,7 @@
 package com.codewithmosh.store.repositories;
 
+import com.codewithmosh.store.dtos.ProductSummary;
+import com.codewithmosh.store.dtos.ProductSummaryDTO;
 import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
@@ -54,6 +56,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("update Product p set p.price = :newPrice where p.category.id = :category")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
 
-    List<Product> findByCategory(Category categoryId);
+    @Query("select new com.codewithmosh.store.dtos.ProductSummaryDTO(p.id, p.name)   from Product p where p.category = :categoryId")
+    List<ProductSummaryDTO> findByCategory(@Param("categoryId") Category categoryId);
 
 }
