@@ -1,9 +1,6 @@
 package com.codewithmosh.store.services;
 
-import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.Category;
-import com.codewithmosh.store.entities.Product;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.entities.*;
 import com.codewithmosh.store.repositories.*;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -11,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @AllArgsConstructor
 @Service
@@ -105,4 +104,66 @@ public class UserService {
             u.getAddresses().forEach(System.out::println);
         });
     }
+
+    @Transactional
+    public void usersWithProfileExercise() {
+        // User 1
+        var user1 = User.builder()
+                .name("John")
+                .email("john@email.com")
+                .password("password1")
+                .build();
+        user1 = userRepository.save(user1);
+
+        var profile1 = Profile.builder()
+                .bio("Bio for John")
+                .phoneNumber("12345678")
+                .dateOfBirth(LocalDate.parse("14-09-2025", DateTimeFormatter.ofPattern("dd-MM-yyyy")))
+                .loyaltyPoints(5)
+                .user(user1)
+                .build();
+        profileRepository.save(profile1);
+
+        // User 2
+        var user2 = User.builder()
+                .name("Jane")
+                .email("jane@email.com")
+                .password("password2")
+                .build();
+        user2 = userRepository.save(user2);
+
+        var profile2 = Profile.builder()
+                .bio("Bio for Jane")
+                .phoneNumber("87654321")
+                .dateOfBirth(LocalDate.parse("15-10-2024", DateTimeFormatter.ofPattern("dd-MM-yyyy")))
+                .loyaltyPoints(10)
+                .user(user2)
+                .build();
+        profileRepository.save(profile2);
+
+        // User 3
+        var user3 = User.builder()
+                .name("Bob")
+                .email("bob@email.com")
+                .password("password3")
+                .build();
+        user3 = userRepository.save(user3);
+
+        var profile3 = Profile.builder()
+                .bio("Bio for Bob")
+                .phoneNumber("11223344")
+                .dateOfBirth(LocalDate.parse("16-11-2023", DateTimeFormatter.ofPattern("dd-MM-yyyy")))
+                .loyaltyPoints(20)
+                .user(user3)
+                .build();
+        profileRepository.save(profile3);
+    }
+
+    @Transactional
+    public void fetchProfilesByLoyaltyPoints(){
+        var profiles = userRepository.findUsersByProfileLoyaltyPoints(2);
+        profiles.forEach(u->
+                System.out.println("id: "+ u.getId()+" email: "+u.getEmail()));
+    }
+
 }
