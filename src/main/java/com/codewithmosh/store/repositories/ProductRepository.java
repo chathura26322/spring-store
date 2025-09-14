@@ -6,6 +6,7 @@ import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -45,8 +46,8 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findTop5ByNameLikeOrderByPriceDesc(String name);
 
     //sql or jpql
-    @Query("select p from Product p join p.category where p.price between :min and :max order by p.name")
-    List<Product> findProducts(@Param("min")  BigDecimal min, @Param("max") BigDecimal max);
+    @Procedure("findProductsByPrice")
+    List<Product> findProducts( BigDecimal min, BigDecimal max);
 
 
     @Query("select count(*) from Product p where p.price between :min and :max order by p.name")
