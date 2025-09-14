@@ -1,5 +1,6 @@
 package com.codewithmosh.store.repositories;
 
+import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -29,7 +30,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     //null
     List<Product> findByDescriptionNull();
-    List<Product> findByDescriptionNotNull(String description);
+//    List<Product> findByDescriptionNotNull(String description);
 
     //Multiple conditions
     List<Product> findByDescriptionNullAndNameNull();
@@ -52,5 +53,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.price = :newPrice where p.category.id = :category")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
+
+    List<Product> findByCategory(Category categoryId);
 
 }
