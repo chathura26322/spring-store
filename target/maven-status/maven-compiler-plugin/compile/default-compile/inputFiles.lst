@@ -1,0 +1,13 @@
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/StoreApplication.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/Address.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/Category.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/Product.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/Profile.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/Tag.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/entities/User.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/repositories/AddressRepository.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/repositories/CategoryRepository.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/repositories/ProductRepository.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/repositories/ProfileRepository.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/repositories/UserRepository.java
+/Users/chathurakumara/Documents/springboot/spring-store/src/main/java/com/codewithmosh/store/services/UserService.java
